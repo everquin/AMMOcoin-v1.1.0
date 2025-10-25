@@ -64,4 +64,7 @@ public:
 
 } // namespace bls
 
+// Global typedef for compatibility with code expecting bls::Bytes
+using Bytes = bls::Bytes;
+
 #endif // BLS_HPP
