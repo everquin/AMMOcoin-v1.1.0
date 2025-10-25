@@ -363,7 +363,7 @@ libbitcoin_server_a_SOURCES = \
   consensus/params.cpp \
   consensus/tx_verify.cpp \
   flatfile.cpp \
-  consensus/zerocoin_verify.cpp \
+  consensus/zerocoin_verify.cpp
 # EVO sources temporarily disabled (require BLS library)
 #  evo/deterministicmns.cpp \
 #  evo/evodb.cpp \
