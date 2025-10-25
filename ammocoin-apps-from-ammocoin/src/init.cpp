@@ -111,11 +111,11 @@ CClientUIInterface uiInterface;  // Declared but not defined in guiinterface.h
 /**
  * The PID file facilities.
  */
-const char * const PIVX_PID_FILENAME = "pivx.pid";
+const char * const AMMOCOIN_PID_FILENAME = "ammocoin.pid";
 
 fs::path GetPidFile()
 {
-    fs::path pathPidFile(gArgs.GetArg("-pid", PIVX_PID_FILENAME));
+    fs::path pathPidFile(gArgs.GetArg("-pid", AMMOCOIN_PID_FILENAME));
     return AbsPathForConfigVal(pathPidFile);
 }
 
@@ -394,7 +394,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-checkblocks=<n>", strprintf("How many blocks to check at startup (default: %u, 0 = all)", DEFAULT_CHECKBLOCKS));
     strUsage += HelpMessageOpt("-checklevel=<n>", strprintf("How thorough the block verification of -checkblocks is (0-4, default: %u)", DEFAULT_CHECKLEVEL));
 
-    strUsage += HelpMessageOpt("-conf=<file>", strprintf("Specify configuration file (default: %s)", PIVX_CONF_FILENAME));
+    strUsage += HelpMessageOpt("-conf=<file>", strprintf("Specify configuration file (default: %s)", AMMOCOIN_CONF_FILENAME));
     if (mode == HMM_BITCOIND) {
 #if !defined(WIN32)
         strUsage += HelpMessageOpt("-daemon", "Run in the background as a daemon and accept commands");
@@ -416,7 +416,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-persistmempool", strprintf("Whether to save the mempool on shutdown and load on restart (default: %u)", DEFAULT_PERSIST_MEMPOOL));
     strUsage += HelpMessageOpt("-par=<n>", strprintf("Set the number of script verification threads (%u to %d, 0 = auto, <0 = leave that many cores free, default: %d)", -GetNumCores(), MAX_SCRIPTCHECK_THREADS, DEFAULT_SCRIPTCHECK_THREADS));
 #ifndef WIN32
-    strUsage += HelpMessageOpt("-pid=<file>", strprintf("Specify pid file (default: %s)", PIVX_PID_FILENAME));
+    strUsage += HelpMessageOpt("-pid=<file>", strprintf("Specify pid file (default: %s)", AMMOCOIN_PID_FILENAME));
 #endif
     strUsage += HelpMessageOpt("-reindex-chainstate", "Rebuild chain state from the currently indexed blocks");
     strUsage += HelpMessageOpt("-reindex", "Rebuild block chain index from current blk000??.dat files on startup");
@@ -966,7 +966,7 @@ void InitLogging()
 #else
     version_string += " (release build)";
 #endif
-    LogPrintf("PIVX version %s\n", version_string);
+    LogPrintf("AMMOcoin version %s\n", version_string);
 }
 
 bool AppInitParameterInteraction()
@@ -1135,7 +1135,7 @@ bool AppInitParameterInteraction()
 
 static bool LockDataDirectory(bool probeOnly)
 {
-    // Make sure only a single PIVX process is using the data directory.
+    // Make sure only a single AMMOcoin process is using the data directory.
     fs::path datadir = GetDataDir();
     if (!DirIsWritable(datadir)) {
         return UIError(strprintf(_("Cannot write to data directory '%s'; check permissions."), datadir.string()));
@@ -1193,16 +1193,16 @@ bool AppInitMain()
         LogPrintf("Startup time: %s\n", FormatISO8601DateTime(GetTime()));
     LogPrintf("Default data directory %s\n", GetDefaultDataDir().string());
     LogPrintf("Using data directory %s\n", GetDataDir().string());
-    LogPrintf("Using config file %s\n", GetConfigFile(gArgs.GetArg("-conf", PIVX_CONF_FILENAME)).string());
+    LogPrintf("Using config file %s\n", GetConfigFile(gArgs.GetArg("-conf", AMMOCOIN_CONF_FILENAME)).string());
     LogPrintf("Using at most %i automatic connections (%i file descriptors available)\n", nMaxConnections, nFD);
     std::ostringstream strErrors;
 
     // Warn about relative -datadir path.
     if (gArgs.IsArgSet("-datadir") && !fs::path(gArgs.GetArg("-datadir", "")).is_absolute()) {
         LogPrintf("Warning: relative datadir option '%s' specified, which will be interpreted relative to the "
-                  "current working directory '%s'. This is fragile because if PIVX is started in the future "
+                  "current working directory '%s'. This is fragile because if AMMOcoin is started in the future "
                   "from a different location. It will be unable to locate the current data files. There could "
-                  "also be data loss if PIVX is started while in a temporary directory.\n",
+                  "also be data loss if AMMOcoin is started while in a temporary directory.\n",
             gArgs.GetArg("-datadir", ""), fs::current_path().string());
     }
 

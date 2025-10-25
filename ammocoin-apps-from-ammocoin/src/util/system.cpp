@@ -78,8 +78,8 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-const char * const PIVX_CONF_FILENAME = "pivx.conf";
-const char * const PIVX_MASTERNODE_CONF_FILENAME = "masternode.conf";
+const char * const AMMOCOIN_CONF_FILENAME = "ammocoin.conf";
+const char * const AMMOCOIN_MASTERNODE_CONF_FILENAME = "masternode.conf";
 
 
 // PIVX only features
@@ -538,7 +538,7 @@ fs::path GetDefaultDataDir()
 // Unix: ~/.pivx
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "PIVX";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "AMMOcoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -550,7 +550,7 @@ fs::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectories(pathRet);
-    return pathRet / "PIVX";
+    return pathRet / "AMMOcoin";
 #else
     // Unix
     return pathRet / ".pivx";
@@ -775,7 +775,7 @@ fs::path GetConfigFile(const std::string& confPath)
 
 fs::path GetMasternodeConfigFile()
 {
-    fs::path pathConfigFile(gArgs.GetArg("-mnconf", PIVX_MASTERNODE_CONF_FILENAME));
+    fs::path pathConfigFile(gArgs.GetArg("-mnconf", AMMOCOIN_MASTERNODE_CONF_FILENAME));
     return AbsPathForConfigVal(pathConfigFile);
 }
 

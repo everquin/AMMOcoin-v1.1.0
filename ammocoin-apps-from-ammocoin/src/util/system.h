@@ -47,9 +47,9 @@ public:
     boost::signals2::signal<std::string (const char* psz)> Translate;
 };
 
-extern const char * const PIVX_CONF_FILENAME;
-extern const char * const PIVX_PID_FILENAME;
-extern const char * const PIVX_MASTERNODE_CONF_FILENAME;
+extern const char * const AMMOCOIN_CONF_FILENAME;
+extern const char * const AMMOCOIN_PID_FILENAME;
+extern const char * const AMMOCOIN_MASTERNODE_CONF_FILENAME;
 extern const char * const DEFAULT_DEBUGLOGFILE;
 
 //PIVX only features

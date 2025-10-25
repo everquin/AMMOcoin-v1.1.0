@@ -612,7 +612,7 @@ int main(int argc, char* argv[])
     if (!Intro::pickDataDirectory())
         return EXIT_SUCCESS;
 
-    /// 6. Determine availability of data directory and parse pivx.conf
+    /// 6. Determine availability of data directory and parse ammocoin.conf
     /// - Do not call GetDataDir(true) before this step finishes
     if (!CheckDataDirOption()) {
         QMessageBox::critical(nullptr, PACKAGE_NAME,
@@ -620,7 +620,7 @@ int main(int argc, char* argv[])
         return EXIT_FAILURE;
     }
     try {
-        gArgs.ReadConfigFile(gArgs.GetArg("-conf", PIVX_CONF_FILENAME));
+        gArgs.ReadConfigFile(gArgs.GetArg("-conf", AMMOCOIN_CONF_FILENAME));
     } catch (const std::exception& e) {
         QMessageBox::critical(nullptr, PACKAGE_NAME,
             QObject::tr("Error: Cannot parse configuration file: %1. Only use key=value syntax.").arg(e.what()));

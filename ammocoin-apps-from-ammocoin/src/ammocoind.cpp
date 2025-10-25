@@ -55,7 +55,7 @@ bool AppInit(int argc, char* argv[])
     //
     // Parameters
     //
-    // If Qt is used, parameters/pivx.conf are parsed in qt/pivx.cpp's main()
+    // If Qt is used, parameters/ammocoin.conf are parsed in qt/pivx.cpp's main()
     gArgs.ParseParameters(argc, argv);
 
     // Process help and version before taking care about datadir
@@ -79,7 +79,7 @@ bool AppInit(int argc, char* argv[])
             return false;
         }
         try {
-            gArgs.ReadConfigFile(gArgs.GetArg("-conf", PIVX_CONF_FILENAME));
+            gArgs.ReadConfigFile(gArgs.GetArg("-conf", AMMOCOIN_CONF_FILENAME));
         } catch (const std::exception& e) {
             fprintf(stderr, "Error reading configuration file: %s\n", e.what());
             return false;
@@ -120,7 +120,7 @@ bool AppInit(int argc, char* argv[])
 
 #ifndef WIN32
         if (gArgs.GetBoolArg("-daemon", false)) {
-            fprintf(stdout, "PIVX server starting\n");
+            fprintf(stdout, "AMMOcoin server starting\n");
 
             // Daemonize
             pid_t pid = fork();
