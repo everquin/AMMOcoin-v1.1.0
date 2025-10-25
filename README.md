@@ -55,29 +55,29 @@ cd ammocoin-source
 make -j4
 
 # Binaries will be in src/
-# - pivxd (AMMOcoin daemon with v1.1.0 security patches)
-# - pivx-cli (Command line interface)
-# - pivx-tx (Transaction utility)
+# - ammocoind (AMMOcoin daemon with v1.1.0 security patches)
+# - ammocoin-cli (Command line interface)
+# - ammocoin-tx (Transaction utility)
 ```
 
 ### **2. Quick Deployment**
 ```bash
 # Stop current daemon
-./pivx-cli stop
+./ammocoin-cli stop
 
 # Backup current version
-cp pivxd pivxd.v1.0.backup
+cp ammocoind ammocoind.v1.0.backup
 
 # Install new version
-cp src/pivxd .
-cp src/pivx-cli .
-cp src/pivx-tx .
+cp src/ammocoind .
+cp src/ammocoin-cli .
+cp src/ammocoin-tx .
 
 # Restart with new version
-./pivxd -daemon
+./ammocoind -daemon
 
 # Verify upgrade
-./pivx-cli getnetworkinfo
+./ammocoin-cli getnetworkinfo
 # Should show: "protocolversion": 70920
 ```
 
@@ -89,7 +89,7 @@ For **modern applications** with enhanced features:
 
 ### **1. Complete the Modern Build**
 ```bash
-cd ammocoin-apps-from-pivx
+cd ammocoin-apps-from-ammocoin
 # Build should complete automatically
 make -j4
 
@@ -143,13 +143,13 @@ After upgrading, verify your node is secure:
 
 ```bash
 # Check protocol version (should be 70920)
-./pivx-cli getnetworkinfo | grep protocolversion
+./ammocoin-cli getnetworkinfo | grep protocolversion
 
 # Check version string (should show v1.1.0)
-./pivxd --version
+./ammocoind --version
 
 # Check peer connections
-./pivx-cli getpeerinfo | grep version
+./ammocoin-cli getpeerinfo | grep version
 ```
 
 **Expected Output:**
