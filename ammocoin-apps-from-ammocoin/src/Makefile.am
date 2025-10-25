@@ -24,9 +24,8 @@ BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAG
 
 BITCOIN_INCLUDES += -I$(srcdir)/rust/include
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
-# BLS includes temporarily disabled due to macOS linking issues
-# BITCOIN_INCLUDES += -I$(srcdir)/chiabls/src
-# BITCOIN_INCLUDES += -I$(srcdir)/chiabls/contrib/relic/include
+# BLS stub headers for compilation compatibility
+BITCOIN_INCLUDES += -I$(srcdir)/chiabls/include
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
 LIBBITCOIN_SERVER=libbitcoin_server.a
