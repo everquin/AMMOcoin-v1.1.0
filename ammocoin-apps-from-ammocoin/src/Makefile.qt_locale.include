@@ -1,15 +1,15 @@
 QT_TS = \
-  qt/locale/pivx_bn.ts \
-  qt/locale/pivx_de.ts \
-  qt/locale/pivx_en.ts \
-  qt/locale/pivx_es.ts \
-  qt/locale/pivx_es_ES.ts \
-  qt/locale/pivx_fa.ts \
-  qt/locale/pivx_fr_FR.ts \
-  qt/locale/pivx_hr_HR.ts \
-  qt/locale/pivx_ko_KR.ts \
-  qt/locale/pivx_nl.ts \
-  qt/locale/pivx_pl.ts \
-  qt/locale/pivx_pt.ts \
-  qt/locale/pivx_pt_BR.ts \
-  qt/locale/pivx_sv.ts
+  qt/locale/ammocoin_bn.ts \
+  qt/locale/ammocoin_de.ts \
+  qt/locale/ammocoin_en.ts \
+  qt/locale/ammocoin_es.ts \
+  qt/locale/ammocoin_es_ES.ts \
+  qt/locale/ammocoin_fa.ts \
+  qt/locale/ammocoin_fr_FR.ts \
+  qt/locale/ammocoin_hr_HR.ts \
+  qt/locale/ammocoin_ko_KR.ts \
+  qt/locale/ammocoin_nl.ts \
+  qt/locale/ammocoin_pl.ts \
+  qt/locale/ammocoin_pt.ts \
+  qt/locale/ammocoin_pt_BR.ts \
+  qt/locale/ammocoin_sv.ts

@@ -13,8 +13,8 @@
     </qresource>
     <qresource prefix="/css">
         <file>res/css/default.css</file>
-        <file alias="default-dark">pivx/res/css/style_dark.css</file>
-        <file alias="default">pivx/res/css/style_light.css</file>
+        <file alias="default-dark">ammocoin/res/css/style_dark.css</file>
+        <file alias="default">ammocoin/res/css/style_light.css</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>

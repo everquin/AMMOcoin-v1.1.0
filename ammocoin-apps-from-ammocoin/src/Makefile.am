@@ -2,7 +2,7 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-DIST_SUBDIRS = secp256k1 univalue chiabls
+DIST_SUBDIRS = secp256k1 univalue
 
 AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS) $(HARDENED_LDFLAGS) $(GPROF_LDFLAGS) $(SANITIZER_LDFLAGS)
 AM_CXXFLAGS = $(DEBUG_CXXFLAGS) $(HARDENED_CXXFLAGS) $(WARN_CXXFLAGS) $(NOWARN_CXXFLAGS) $(ERROR_CXXFLAGS) $(GPROF_CXXFLAGS) $(SANITIZER_CXXFLAGS)
@@ -24,8 +24,9 @@ BITCOIN_INCLUDES=-I$(builddir) -I$(builddir)/obj $(BDB_CPPFLAGS) $(BOOST_CPPFLAG
 
 BITCOIN_INCLUDES += -I$(srcdir)/rust/include
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
-BITCOIN_INCLUDES += -I$(srcdir)/chiabls/src
-BITCOIN_INCLUDES += -I$(srcdir)/chiabls/contrib/relic/include
+# BLS includes temporarily disabled due to macOS linking issues
+# BITCOIN_INCLUDES += -I$(srcdir)/chiabls/src
+# BITCOIN_INCLUDES += -I$(srcdir)/chiabls/contrib/relic/include
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
 LIBBITCOIN_SERVER=libbitcoin_server.a
@@ -54,7 +55,7 @@ if ENABLE_WALLET
 LIBBITCOIN_WALLET=libbitcoin_wallet.a
 endif
 
-BLS_LIBS = $(LIBCHIABLS)
+# BLS_LIBS = $(LIBCHIABLS)
 
 RUST_ENV_VARS = RUSTC="$(RUSTC)" TERM=dumb
 RUST_BUILD_OPTS = --release
@@ -357,37 +358,35 @@ libbitcoin_server_a_SOURCES = \
   addrman.cpp \
   bloom.cpp \
   blocksignature.cpp \
-  bls/bls_ies.cpp \
-  bls/bls_worker.cpp \
-  bls/bls_wrapper.cpp \
-  bls/key_io.cpp \
   chain.cpp \
   checkpoints.cpp \
   consensus/params.cpp \
   consensus/tx_verify.cpp \
   flatfile.cpp \
   consensus/zerocoin_verify.cpp \
-  evo/deterministicmns.cpp \
-  evo/evodb.cpp \
-  evo/evonotificationinterface.cpp \
+# EVO sources temporarily disabled (require BLS library)
+#  evo/deterministicmns.cpp \
+#  evo/evodb.cpp \
+#  evo/evonotificationinterface.cpp \
   evo/mnauth.cpp \
   evo/providertx.cpp \
   evo/specialtx_validation.cpp \
-  llmq/quorums.cpp \
-  llmq/quorums_blockprocessor.cpp \
-  llmq/quorums_chainlocks.cpp \
-  llmq/quorums_commitment.cpp \
-  llmq/quorums_connections.cpp \
-  llmq/quorums_debug.cpp \
-  llmq/quorums_dkgsessionhandler.cpp \
-  llmq/quorums_dkgsessionmgr.cpp \
-  llmq/quorums_dkgsession.cpp \
-  llmq/quorums_init.cpp \
-  llmq/quorums_utils.cpp \
-  llmq/quorums_signing.cpp \
-  llmq/quorums_signing_shares.cpp \
-  tiertwo/masternode_meta_manager.cpp \
-  tiertwo/net_masternodes.cpp \
+# LLMQ sources temporarily disabled (require BLS library)
+#  llmq/quorums.cpp \
+#  llmq/quorums_blockprocessor.cpp \
+#  llmq/quorums_chainlocks.cpp \
+#  llmq/quorums_commitment.cpp \
+#  llmq/quorums_connections.cpp \
+#  llmq/quorums_debug.cpp \
+#  llmq/quorums_dkgsessionhandler.cpp \
+#  llmq/quorums_dkgsessionmgr.cpp \
+#  llmq/quorums_dkgsession.cpp \
+#  llmq/quorums_init.cpp \
+#  llmq/quorums_utils.cpp \
+#  llmq/quorums_signing.cpp \
+#  llmq/quorums_signing_shares.cpp \
+#  tiertwo/masternode_meta_manager.cpp \
+#  tiertwo/net_masternodes.cpp \
   httprpc.cpp \
   httpserver.cpp \
   init.cpp \
@@ -690,7 +689,7 @@ ammocoind_LDADD = \
   $(LIBRUSTZCASH) \
   $(LIBZCASH_LIBS)
 
-ammocoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(BLS_LIBS)
+ammocoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
 # ammocoin-cli binary #
 ammocoin_cli_SOURCES = ammocoin-cli.cpp
@@ -711,7 +710,7 @@ ammocoin_cli_LDADD = \
   $(LIBRUSTZCASH) \
   $(LIBZCASH_LIBS)
 
-ammocoin_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS) $(BLS_LIBS)
+ammocoin_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
 #
 
 # ammocoin-tx binary #
@@ -735,7 +734,7 @@ ammocoin_tx_LDADD = \
   $(LIBRUSTZCASH) \
   $(LIBZCASH_LIBS)
 
-ammocoin_tx_LDADD += $(BOOST_LIBS) $(BLS_LIBS)
+ammocoin_tx_LDADD += $(BOOST_LIBS)
 #
 
 # bitcoinconsensus library #
@@ -763,7 +762,7 @@ if GLIBC_BACK_COMPAT
 endif
 
 libbitcoinconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libbitcoinconsensus_la_LIBADD = $(LIBSECP256K1) $(BLS_LIBS)
+libbitcoinconsensus_la_LIBADD = $(LIBSECP256K1)
 libbitcoinconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
 libbitcoinconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
