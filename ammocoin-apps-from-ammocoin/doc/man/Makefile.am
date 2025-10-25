@@ -1,7 +1,7 @@
 dist_man1_MANS=
 
 if BUILD_BITCOIND
-  dist_man1_MANS+=pivxd.1
+  dist_man1_MANS+=ammocoind.1
 endif
 
 if ENABLE_QT
@@ -9,5 +9,5 @@ if ENABLE_QT
 endif
 
 if BUILD_BITCOIN_UTILS
-  dist_man1_MANS+=pivx-cli.1 pivx-tx.1
+  dist_man1_MANS+=ammocoin-cli.1 ammocoin-tx.1
 endif

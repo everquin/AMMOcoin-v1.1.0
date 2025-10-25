@@ -12,6 +12,11 @@
 #ifndef BITCOIN_PROTOCOL_H
 #define BITCOIN_PROTOCOL_H
 
+// Undefine VERSION macro that conflicts with chiabls library
+#ifdef VERSION
+#undef VERSION
+#endif
+
 #include "netaddress.h"
 #include "serialize.h"
 #include "streams.h"

@@ -1,0 +1,40 @@
+# AMMOcoin Configuration File Template
+# Copy this file to ~/.ammocoin/ammocoin.conf and customize
+
+# Network settings
+listen=1
+daemon=1
+server=1
+
+# RPC settings
+rpcuser=ammouser
+rpcpassword=CHANGE_THIS_PASSWORD_TO_SOMETHING_SECURE
+rpcport=55882
+rpcallowip=127.0.0.1
+
+# Connection settings
+maxconnections=64
+addnode=seed1.ammocoin.org
+addnode=seed2.ammocoin.org
+
+# Staking settings (for Proof-of-Stake)
+staking=1
+
+# Masternode settings (uncomment if running a masternode)
+#masternode=1
+#masternodeprivkey=MASTERNODE_PRIVATE_KEY_HERE
+
+# Logging
+logtimestamps=1
+shrinkdebugfile=1
+
+# Privacy features (Sapling)
+experimentalfeatures=1
+zindex=1
+
+# Database settings
+dbcache=512
+maxmempool=300
+
+# Fee settings
+minrelaytxfee=0.00001

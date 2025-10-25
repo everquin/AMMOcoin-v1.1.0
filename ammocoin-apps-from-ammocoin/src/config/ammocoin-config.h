@@ -39,7 +39,7 @@
 /* #undef ENABLE_SSE41 */
 
 /* Define to 1 to enable wallet functions */
-/* #undef ENABLE_WALLET */
+#define ENABLE_WALLET 1
 
 /* Define to 1 to enable ZMQ functions */
 #define ENABLE_ZMQ 1
@@ -60,7 +60,7 @@
 #define HAVE_BOOST_THREAD /**/
 
 /* define if the Boost::Unit_Test_Framework library is available */
-#define HAVE_BOOST_UNIT_TEST_FRAMEWORK /**/
+/* #undef HAVE_BOOST_UNIT_TEST_FRAMEWORK */
 
 /* Define to 1 if you have the <byteswap.h> header file. */
 /* #undef HAVE_BYTESWAP_H */
