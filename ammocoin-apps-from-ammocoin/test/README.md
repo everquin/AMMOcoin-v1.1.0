@@ -1,4 +1,4 @@
-This directory contains integration tests that test pivxd and its
+This directory contains integration tests that test ammocoind and its
 utilities in their entirety. It does not contain unit tests, which
 can be found in [/src/test](/src/test), [/src/wallet/test](/src/wallet/test),
 etc.
@@ -6,10 +6,10 @@ etc.
 This directory contains the following sets of tests:
 
 - [functional](/test/functional) which test the functionality of
-pivxd and pivx-qt by interacting with them through the RPC and P2P
+ammocoind and ammocoin-qt by interacting with them through the RPC and P2P
 interfaces.
-- [util](/test/util) which tests the pivx utilities, currently only
-pivx-tx.
+- [util](/test/util) which tests the ammocoin utilities, currently only
+ammocoin-tx.
 - [lint](/test/lint) which perform various static analysis checks.
 
 The util tests are run as part of `make check` target. The functional
@@ -71,29 +71,29 @@ options. Run `test_runner.py -h` to see them all.
 
 ##### Resource contention
 
-The P2P and RPC ports used by the pivxd nodes-under-test are chosen to make
-conflicts with other processes unlikely. However, if there is another pivxd
+The P2P and RPC ports used by the ammocoind nodes-under-test are chosen to make
+conflicts with other processes unlikely. However, if there is another ammocoind
 process running on the system (perhaps from a previous test which hasn't successfully
-killed all its pivxd nodes), then there may be a port conflict which will
+killed all its ammocoind nodes), then there may be a port conflict which will
 cause the test to fail. It is recommended that you run the tests on a system
-where no other pivxd processes are running.
+where no other ammocoind processes are running.
 
 On linux, the test_framework will warn if there is another
-pivxd process running when the tests are started.
+ammocoind process running when the tests are started.
 
-If there are zombie pivxd processes after test failure, you can kill them
+If there are zombie ammocoind processes after test failure, you can kill them
 by running the following commands. **Note that these commands will kill all
-pivxd processes running on the system, so should not be used if any non-test
-pivxd processes are being run.**
+ammocoind processes running on the system, so should not be used if any non-test
+ammocoind processes are being run.**
 
 ```bash
-killall pivxd
+killall ammocoind
 ```
 
 or
 
 ```bash
-pkill -9 pivxd
+pkill -9 ammocoind
 ```
 
 
@@ -104,11 +104,11 @@ functional test is run and is stored in test/cache. This speeds up
 test startup times since new blockchains don't need to be generated for
 each test. However, the cache may get into a bad state, in which case
 tests will fail. If this happens, remove the cache directory (and make
-sure pivxd processes are stopped as above):
+sure ammocoind processes are stopped as above):
 
 ```bash
 rm -rf cache
-killall pivxd
+killall ammocoind
 ```
 
 ##### Test logging
@@ -121,13 +121,13 @@ default:
 - when run directly, *all* logs are written to `test_framework.log` and INFO
   level and above are output to the console.
 - when run on Travis, no logs are output to the console. However, if a test
-  fails, the `test_framework.log` and pivxd `debug.log`s will all be dumped
+  fails, the `test_framework.log` and ammocoind `debug.log`s will all be dumped
   to the console to help troubleshooting.
 
 To change the level of logs output to the console, use the `-l` command line
 argument.
 
-`test_framework.log` and pivxd `debug.log`s can be combined into a single
+`test_framework.log` and ammocoind `debug.log`s can be combined into a single
 aggregate log by running the `combine_logs.py` script. The output can be plain
 text, colorized text or html. For example:
 

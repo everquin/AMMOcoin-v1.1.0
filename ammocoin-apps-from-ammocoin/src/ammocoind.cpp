@@ -26,8 +26,8 @@
  *
  * \section intro_sec Introduction
  *
- * This is the developer documentation of the reference client for an experimental new digital currency called PIVX (http://www.pivx.org),
- * which enables instant payments to anyone, anywhere in the world. PIVX uses peer-to-peer technology to operate
+ * This is the developer documentation of the reference client for an experimental new digital currency called AMMOcoin,
+ * which enables instant payments to anyone, anywhere in the world. AMMOcoin uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are carried out collectively by the network.
  *
  * The software is a community-driven open source project, released under the MIT license.
@@ -55,7 +55,7 @@ bool AppInit(int argc, char* argv[])
     //
     // Parameters
     //
-    // If Qt is used, parameters/ammocoin.conf are parsed in qt/pivx.cpp's main()
+    // If Qt is used, parameters/ammocoin.conf are parsed in qt/ammocoin.cpp's main()
     gArgs.ParseParameters(argc, argv);
 
     // Process help and version before taking care about datadir
@@ -65,7 +65,7 @@ bool AppInit(int argc, char* argv[])
         if (gArgs.IsArgSet("-version")) {
             strUsage += LicenseInfo();
         } else {
-            strUsage += "\nUsage:  pivxd [options]                     Start " PACKAGE_NAME " Daemon\n";
+            strUsage += "\nUsage:  ammocoind [options]                     Start " PACKAGE_NAME " Daemon\n";
             strUsage += "\n" + HelpMessage(HMM_BITCOIND);
         }
 
@@ -95,12 +95,12 @@ bool AppInit(int argc, char* argv[])
         // Error out when loose non-argument tokens are encountered on command line
         for (int i = 1; i < argc; i++) {
             if (!IsSwitchChar(argv[i][0])) {
-                fprintf(stderr, "Error: Command line contains unexpected token '%s', see pivxd -h for a list of options.\n", argv[i]);
+                fprintf(stderr, "Error: Command line contains unexpected token '%s', see ammocoind -h for a list of options.\n", argv[i]);
                 return false;
             }
         }
 
-        // -server defaults to true for pivxd but not for the GUI so do this here
+        // -server defaults to true for ammocoind but not for the GUI so do this here
         gArgs.SoftSetBoolArg("-server", true);
         // Set this early so that parameter interactions go to console
         InitLogging();
@@ -166,7 +166,7 @@ int main(int argc, char* argv[])
 #endif
     SetupEnvironment();
 
-    // Connect pivxd signal handlers
+    // Connect ammocoind signal handlers
     noui_connect();
 
     return (AppInit(argc, argv) ? 0 : 1);
