@@ -1,5 +1,5 @@
 ---
-name: "pivx-win-5.6"
+name: "ammocoin-win-1.1.0"
 enable_cache: true
 distro: "ubuntu"
 suites:
@@ -23,8 +23,8 @@ packages:
 - "ca-certificates"
 - "python3"
 remotes:
-- "url": "https://github.com/pivx-project/pivx.git"
-  "dir": "pivx"
+- "url": "https://github.com/AMMOcoin/AMMOcoin.git"
+  "dir": "ammocoin"
 files: []
 script: |
   set -e -o pipefail

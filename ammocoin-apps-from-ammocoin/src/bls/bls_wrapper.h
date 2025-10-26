@@ -104,7 +104,7 @@ public:
             Reset();
         } else {
             try {
-                impl = ImplType::FromBytes(Bytes(vecBytes));
+                impl = ImplType::FromBytes(vecBytes);
                 fValid = true;
             } catch (...) {
                 Reset();
