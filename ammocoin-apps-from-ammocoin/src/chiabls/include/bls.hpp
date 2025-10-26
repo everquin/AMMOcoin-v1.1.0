@@ -24,6 +24,7 @@ class G1Element {
 public:
     G1Element() = default;
     static G1Element FromBytes(const std::vector<uint8_t>& bytes) { return G1Element(); }
+    static G1Element FromBytes(const Bytes& bytes) { return G1Element(); }
     std::vector<uint8_t> Serialize() const { return std::vector<uint8_t>(); }
     bool IsValid() const { return false; }
     static G1Element Generator() { return G1Element(); }
@@ -36,6 +37,7 @@ class G2Element {
 public:
     G2Element() = default;
     static G2Element FromBytes(const std::vector<uint8_t>& bytes) { return G2Element(); }
+    static G2Element FromBytes(const Bytes& bytes) { return G2Element(); }
     std::vector<uint8_t> Serialize() const { return std::vector<uint8_t>(); }
     bool IsValid() const { return false; }
     static G2Element Generator() { return G2Element(); }
@@ -54,11 +56,14 @@ class PrivateKey {
 public:
     PrivateKey() = default;
     static PrivateKey FromBytes(const std::vector<uint8_t>& bytes) { return PrivateKey(); }
+    static PrivateKey FromBytes(const Bytes& bytes) { return PrivateKey(); }
     static PrivateKey FromSeed(const std::vector<uint8_t>& seed) { return PrivateKey(); }
+    static PrivateKey FromSeed(const Bytes& seed) { return PrivateKey(); }
     std::vector<uint8_t> Serialize() const { return std::vector<uint8_t>(); }
     G1Element GetG1Element() const { return G1Element(); }
     G2Element GetG2Element() const { return G2Element(); }
     G2Element Sign(const std::vector<uint8_t>& message) const { return G2Element(); }
+    G2Element Sign(const Bytes& message) const { return G2Element(); }
     bool operator==(const PrivateKey& other) const { return false; }
 };
 
