@@ -194,11 +194,17 @@ npm run dev
 
 ## 📝 **Documentation**
 
+### **Setup & Installation**
+- **🔄 Ubuntu Upgrade Guide**: [UBUNTU_UPGRADE_GUIDE.md](UBUNTU_UPGRADE_GUIDE.md) - Complete Ubuntu 18.04→24.04 + AMMOcoin v1.0→v1.1.0 upgrade
 - **Installation Guide**: [ammocoin-apps-from-ammocoin/README.md](ammocoin-apps-from-ammocoin/README.md)
+- **Build Instructions**: [cross-compile/README.md](cross-compile/README.md)
+
+### **Applications & Tools**
 - **Blockchain Explorer**: [blockchain-explorer/README.md](blockchain-explorer/README.md)
 - **Explorer Deployment**: [blockchain-explorer/DEPLOYMENT_GUIDE.md](blockchain-explorer/DEPLOYMENT_GUIDE.md)
 - **Paper Wallet Guide**: [paper-wallet-generator/README.md](paper-wallet-generator/README.md)
-- **Build Instructions**: [cross-compile/README.md](cross-compile/README.md)
+
+### **Technical Documentation**
 - **Release Summary**: [MULTI_PLATFORM_RELEASE_SUMMARY.md](MULTI_PLATFORM_RELEASE_SUMMARY.md)
 - **Whitepapers**: [AMMOcoin_Whitepaper_v1.1.0.md](AMMOcoin_Whitepaper_v1.1.0.md)
 
