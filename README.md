@@ -1,194 +1,222 @@
-# 🚨 AMMOcoin v1.1.0 Emergency Security Release
+# AMMOcoin v1.1.0
 
-## **CRITICAL: Network Enforcement in 72 Hours**
+**Privacy-Focused Cryptocurrency Platform with Multi-Platform Support**
 
-This emergency release provides **critical security updates** for the AMMOcoin network. All users **MUST** upgrade within 72 hours to avoid network disconnection.
-
----
-
-## 🔒 **Security Fixes Applied**
-
-### **1. DoS Attack Prevention** ⭐ **CRITICAL**
-- **Fixed**: Mempool command abuse vulnerability
-- **Impact**: Prevents network flooding attacks that could crash nodes
-- **Code**: Added protection in `src/main.cpp` line 6594
-
-### **2. Protocol Security Upgrade** ⭐ **CRITICAL**
-- **Updated**: Protocol version 70916 → 70920
-- **Enforcement**: Older protocol versions will be rejected after 72 hours
-- **Impact**: Forces all nodes to use secure communication
-
-### **3. Modern Codebase** ⭐ **MAJOR IMPROVEMENT**
-- **Source**: Latest PIVX v5.6.1 adapted to AMMOcoin
-- **Benefits**: 5-6 years of security patches and improvements
-- **Features**: Modern Qt GUI, cross-platform support, enhanced stability
+[![Build Status](https://img.shields.io/badge/build-production--ready-brightgreen)](https://github.com/AMMOcoin/AMMOcoin)
+[![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows%20%7C%20ARM64-blue)](https://github.com/AMMOcoin/AMMOcoin)
+[![License](https://img.shields.io/badge/license-MIT-yellow)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 📦 **What's Included**
+## What is AMMOcoin?
 
-This release provides **TWO APPROACHES** for the emergency upgrade:
+AMMOcoin is a modern, privacy-focused cryptocurrency built on proven blockchain technology. It combines the robust foundation of Bitcoin with advanced privacy features, energy-efficient Proof-of-Stake consensus, and comprehensive multi-platform support.
 
-### **Option A: Updated Core Daemon** ⭐ **IMMEDIATE DEPLOYMENT**
-- **Location**: `/ammocoin-source/` directory
-- **Status**: ✅ **Ready for immediate use**
-- **Security**: All critical patches applied
-- **Protocol**: Version 70920 with DoS protection
+### Key Features
 
-### **Option B: Modern Applications** ⭐ **ADVANCED FEATURES**
-- **Location**: `/ammocoin-apps-from-ammocoin/` directory
-- **Status**: 🔄 **Advanced build in progress**
-- **Features**: Modern Qt GUI, enhanced functionality
-- **Timeline**: Complete within 2-4 hours
+🛡️ **Privacy Technology**
+- **Sapling Protocol**: Zero-knowledge proofs for completely private transactions
+- **Shielded Addresses**: Optional privacy for enhanced transaction confidentiality
+- **Selective Disclosure**: Users control transaction visibility
+
+⚡ **Advanced Consensus**
+- **Proof-of-Stake**: Energy-efficient mining alternative
+- **Masternode Network**: Tier-two infrastructure for enhanced services
+- **Fast Block Times**: Quick transaction confirmation
+
+🏛️ **Governance & Economics**
+- **Decentralized Voting**: Community-driven development decisions
+- **Treasury System**: Sustainable funding for ecosystem growth
+- **Staking Rewards**: Passive income for network participants
+
+🔧 **Developer Features**
+- **JSON-RPC API**: Complete programmatic blockchain access
+- **Multi-signature Support**: Enterprise-grade security
+- **HD Wallets**: BIP32/44 hierarchical deterministic wallets
 
 ---
 
-## ⚡ **IMMEDIATE DEPLOYMENT (Option A)**
+## 📦 **What's Available**
 
-For **critical infrastructure** and **immediate deployment**:
+### ✅ **Production Ready**
 
-### **1. Build Updated Core Daemon**
+#### **1. macOS Binaries** (Native ARM64/Intel)
+- `ammocoind` (11.6MB) - Core daemon server
+- `ammocoin-cli` (820KB) - Command-line interface
+- `ammocoin-tx` (1.7MB) - Transaction utility
+- **Status**: Working and tested
+
+#### **2. Secure Paper Wallet Generator**
+- Modern HTML/JavaScript implementation
+- Web Crypto API for cryptographically secure generation
+- QR code support for mobile scanning
+- Offline operation capability
+
+#### **3. Cross-Platform Build System**
+- Docker-based compilation for Linux x64
+- Docker-based compilation for Windows x64
+- Docker-based compilation for ARM64/Raspberry Pi
+- Automated build scripts for all platforms
+
+---
+
+## 🚀 **Quick Start**
+
+### macOS Installation
+
 ```bash
-cd ammocoin-source
-./autogen.sh
-./configure --with-boost=/opt/homebrew
-make -j4
+# Clone the repository
+git clone https://github.com/AMMOcoin/AMMOcoin.git
+cd AMMOcoin
 
-# Binaries will be in src/
-# - ammocoind (AMMOcoin daemon with v1.1.0 security patches)
-# - ammocoin-cli (Command line interface)
-# - ammocoin-tx (Transaction utility)
+# Use pre-built binaries (recommended)
+cd ammocoin-apps-from-ammocoin
+./ammocoind -daemon
+./ammocoin-cli getinfo
 ```
 
-### **2. Quick Deployment**
+### Build from Source
+
 ```bash
-# Stop current daemon
-./ammocoin-cli stop
+# Install dependencies (macOS)
+brew install boost berkeley-db@4 libevent openssl qt@5
 
-# Backup current version
-cp ammocoind ammocoind.v1.0.backup
+# Build AMMOcoin
+cd ammocoin-apps-from-ammocoin
+./configure --with-incompatible-bdb --disable-tests --disable-bench
+make -j4
+```
 
-# Install new version
-cp src/ammocoind .
-cp src/ammocoin-cli .
-cp src/ammocoin-tx .
+### Multi-Platform Compilation
 
-# Restart with new version
+```bash
+# Build for all platforms using Docker
+cd cross-compile
+./build-all-platforms.sh
+
+# Creates binaries for:
+# - Linux x64
+# - Windows x64
+# - ARM64/Raspberry Pi
+```
+
+---
+
+## 💻 **Platform Support**
+
+| Platform | Status | Binary Size | Notes |
+|----------|--------|-------------|--------|
+| **macOS ARM64** | ✅ Working | 14MB total | Native M1/M2 support |
+| **macOS Intel** | ✅ Working | 14MB total | Via Rosetta compatibility |
+| **Linux x64** | 🔄 Ready for build | ~14MB | Ubuntu/Debian/CentOS |
+| **Windows x64** | 🔄 Ready for build | ~14MB | Windows 10/11 |
+| **ARM64/RPi** | 🔄 Ready for build | ~14MB | Raspberry Pi 4/5 |
+
+---
+
+## 🔧 **Usage Examples**
+
+### Basic Operations
+```bash
+# Start daemon
 ./ammocoind -daemon
 
-# Verify upgrade
-./ammocoin-cli getnetworkinfo
-# Should show: "protocolversion": 70920
+# Check node status
+./ammocoin-cli getinfo
+
+# Create new address
+./ammocoin-cli getnewaddress
+
+# Send transaction
+./ammocoin-cli sendtoaddress "address" 10.0
+
+# Enable staking
+./ammocoin-cli walletpassphrase "passphrase" 999999 true
 ```
 
----
-
-## 🎯 **ADVANCED DEPLOYMENT (Option B)**
-
-For **modern applications** with enhanced features:
-
-### **1. Complete the Modern Build**
+### Privacy Transactions
 ```bash
-cd ammocoin-apps-from-ammocoin
-# Build should complete automatically
-make -j4
+# Create shielded address
+./ammocoin-cli getnewshieldedaddress
 
-# Will create:
-# - ammocoind (Modern AMMOcoin daemon)
-# - ammocoin-cli (Updated CLI)
-# - ammocoin-tx (Updated transaction tool)
-# - ammocoin-qt (Modern GUI wallet)
+# Shield coins for privacy
+./ammocoin-cli shieldsendmany "from_address" '[{"address":"shielded_address","amount":10}]'
 ```
 
-### **2. Full Feature Set**
-- ✅ **Modern Qt GUI** - Professional wallet interface
-- ✅ **Cross-platform** - Windows, macOS, Linux support
-- ✅ **Enhanced Security** - Latest security improvements
-- ✅ **Advanced Features** - Masternodes, staking, privacy features
-
----
-
-## 🔧 **Build Dependencies**
-
-### **macOS (Homebrew)**
+### Paper Wallet Generation
 ```bash
-brew install automake autoconf libtool boost berkeley-db qt@5
-```
-
-### **Ubuntu/Debian**
-```bash
-sudo apt update
-sudo apt install build-essential libtool autotools-dev automake pkg-config
-sudo apt install libssl-dev libevent-dev bsdmainutils python3
-sudo apt install libboost-all-dev libdb4.8-dev libdb4.8++-dev
-sudo apt install qt5-default qttools5-dev-tools
+# Open the paper wallet generator
+open paper-wallet-generator/index.html
+# Generate secure offline wallets with QR codes
 ```
 
 ---
 
-## ⚠️ **CRITICAL TIMELINE**
+## 📊 **Technical Specifications**
 
-| Hours Remaining | Action Required |
-|-----------------|-----------------|
-| **72 Hours** | All infrastructure must upgrade |
-| **48 Hours** | Masternodes and services |
-| **24 Hours** | All users should upgrade |
-| **0 Hours** | Network enforcement begins |
+### Network Parameters
+- **Port**: 55881
+- **RPC Port**: 55882
+- **Block Time**: 60 seconds
+- **Algorithm**: Proof-of-Stake
+- **Masternode Collateral**: 10,000 AMMO
 
----
-
-## 🧪 **Quick Verification**
-
-After upgrading, verify your node is secure:
-
-```bash
-# Check protocol version (should be 70920)
-./ammocoin-cli getnetworkinfo | grep protocolversion
-
-# Check version string (should show v1.1.0)
-./ammocoind --version
-
-# Check peer connections
-./ammocoin-cli getpeerinfo | grep version
-```
-
-**Expected Output:**
-- Protocol version: `70920`
-- Version string: `AMMOcoin Core version v1.1.0`
-- DoS protection: Active (check debug.log)
+### Privacy Features
+- **Protocol**: Sapling (zk-SNARKs)
+- **Address Format**: AMMOcoin-specific (0x17 version)
+- **Private Keys**: WIF format (0x97 version)
+- **Cryptography**: SHA256, RIPEMD160, secp256k1
 
 ---
 
-## 📞 **Emergency Support**
+## 📝 **Documentation**
 
-### **For Critical Issues:**
-- **Discord**: [AMMOcoin Emergency Channel]
-- **Telegram**: [AMMOcoin Support]
-- **Email**: emergency@ammocoin.org
-
-### **Deployment Priority:**
-1. **Exchanges & Services** - Immediate upgrade required
-2. **Masternodes** - Upgrade within 24 hours
-3. **All Users** - Upgrade within 48 hours
+- **Installation Guide**: [ammocoin-apps-from-ammocoin/README.md](ammocoin-apps-from-ammocoin/README.md)
+- **Paper Wallet Guide**: [paper-wallet-generator/README.md](paper-wallet-generator/README.md)
+- **Build Instructions**: [cross-compile/README.md](cross-compile/README.md)
+- **Release Summary**: [MULTI_PLATFORM_RELEASE_SUMMARY.md](MULTI_PLATFORM_RELEASE_SUMMARY.md)
+- **Whitepapers**: [AMMOcoin_Whitepaper_v1.1.0.md](AMMOcoin_Whitepaper_v1.1.0.md)
 
 ---
 
-## 💾 **Wallet Compatibility**
+## 🔒 **Security**
 
-✅ **Your existing wallet.dat files are fully compatible**
-- No wallet migration required
-- Same address format
-- Same private key format
-- Blockchain history preserved
+### Reporting Vulnerabilities
+For security concerns, please email: security@ammocoin.org
 
-**Simply stop, upgrade, and restart!**
+**Do not create public issues for security vulnerabilities.**
+
+### Best Practices
+- Always encrypt your wallet with a strong passphrase
+- Regular backup of wallet.dat
+- Keep software updated
+- Use official releases only
+- Verify checksums before installation
 
 ---
 
-**This is a mandatory security update. Upgrade immediately to maintain network participation and security.**
+## 🤝 **Contributing**
+
+We welcome contributions! Please see our contribution guidelines for:
+- Code standards and review process
+- Testing requirements
+- Documentation standards
+- Community guidelines
 
 ---
 
-*AMMOcoin Development Team*
-*October 18, 2025*
-*Emergency Security Release v1.1.0*
+## 📄 **License**
+
+AMMOcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more information.
+
+---
+
+## 🌟 **Acknowledgments**
+
+AMMOcoin is built upon the foundational work of Bitcoin, PIVX, Zcash, and the broader cryptocurrency development community. We acknowledge their contributions to open-source blockchain technology.
+
+---
+
+**Current Version**: v1.1.0
+**Release Date**: October 2024
+**Status**: Production Ready ✅
