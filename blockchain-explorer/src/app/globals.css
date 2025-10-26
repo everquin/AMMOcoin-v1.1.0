@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css?family=Play:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Jura:300,400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:200,300,400,500,600,700,800,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AMMOcoin Explorer Global Styles */
+
+@layer base {
+  html {
+    font-family: 'Play', sans-serif;
+  }
+
+  body {
+    @apply bg-ammocoin-black text-ammocoin-white font-sans;
+    background-attachment: fixed;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(50, 205, 50, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(50, 205, 50, 0.08) 0%, transparent 50%);
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ammocoin-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ammocoin-primary rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ammocoin-hover;
+  }
+}
+
+@layer components {
+  /* Glass morphism card component */
+  .glass-card {
+    @apply bg-ammocoin-surface backdrop-blur-ammocoin border border-ammocoin-border rounded-ammocoin;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  /* AMMOcoin styled button */
+  .btn-ammocoin {
+    @apply bg-ammocoin-primary hover:bg-ammocoin-hover text-ammocoin-black font-semibold py-3 px-6 rounded-ammocoin-button transition-all duration-ammocoin;
+    @apply shadow-ammocoin hover:shadow-ammocoin-lg transform hover:scale-105;
+  }
+
+  /* AMMOcoin styled button outline */
+  .btn-ammocoin-outline {
+    @apply border-2 border-ammocoin-primary text-ammocoin-primary hover:bg-ammocoin-primary hover:text-ammocoin-black;
+    @apply font-semibold py-3 px-6 rounded-ammocoin-button transition-all duration-ammocoin;
+  }
+
+  /* Navigation glass effect */
+  .nav-glass {
+    @apply bg-ammocoin-black/95 backdrop-blur-ammocoin border-b border-ammocoin-border;
+  }
+
+  /* Hash/Address display styling */
+  .hash-display {
+    @apply font-mono text-sm bg-ammocoin-gray-800 px-3 py-1 rounded border border-ammocoin-border;
+    @apply break-all select-all hover:bg-ammocoin-gray-700 transition-colors;
+  }
+
+  /* Status badges */
+  .status-confirmed {
+    @apply bg-success/20 text-success border border-success/30 px-2 py-1 rounded text-xs font-medium;
+  }
+
+  .status-pending {
+    @apply bg-warning/20 text-warning border border-warning/30 px-2 py-1 rounded text-xs font-medium;
+  }
+
+  .status-failed {
+    @apply bg-error/20 text-error border border-error/30 px-2 py-1 rounded text-xs font-medium;
+  }
+
+  /* Data tables */
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply text-left py-3 px-4 font-semibold text-ammocoin-primary border-b border-ammocoin-border;
+  }
+
+  .data-table td {
+    @apply py-3 px-4 border-b border-ammocoin-border/50;
+  }
+
+  .data-table tr:hover {
+    @apply bg-ammocoin-surface/50;
+  }
+
+  /* Search input */
+  .search-input {
+    @apply w-full bg-ammocoin-surface border border-ammocoin-border rounded-ammocoin px-4 py-3;
+    @apply text-ammocoin-white placeholder-ammocoin-gray-400 focus:outline-none focus:border-ammocoin-primary;
+    @apply transition-colors duration-ammocoin;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block w-6 h-6 border-2 border-ammocoin-gray-700 border-t-ammocoin-primary rounded-full;
+    animation: spin 1s linear infinite;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply glass-card p-6 hover:border-ammocoin-primary/50 transition-all duration-ammocoin;
+  }
+
+  /* Block/Transaction card */
+  .block-card {
+    @apply glass-card p-6 hover:shadow-ammocoin/20 transition-all duration-ammocoin;
+  }
+
+  /* Amount display */
+  .amount-positive {
+    @apply text-success font-mono;
+  }
+
+  .amount-negative {
+    @apply text-error font-mono;
+  }
+
+  .amount-neutral {
+    @apply text-ammocoin-gray-300 font-mono;
+  }
+}
+
+@layer utilities {
+  /* Text selection styling */
+  .selection-ammocoin {
+    @apply selection:bg-ammocoin-primary selection:text-ammocoin-black;
+  }
+
+  /* Glassmorphism utilities */
+  .glass-light {
+    @apply bg-white/10 backdrop-blur-sm;
+  }
+
+  .glass-medium {
+    @apply bg-white/5 backdrop-blur-ammocoin;
+  }
+
+  .glass-heavy {
+    @apply bg-white/20 backdrop-blur-xl;
+  }
+
+  /* Animation utilities */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-pulse-green {
+    animation: pulseGreen 2s infinite;
+  }
+}
+
+/* Custom animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(50, 205, 50, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(50, 205, 50, 0);
+  }
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 640px) {
+  .hash-display {
+    @apply text-xs px-2 py-1;
+  }
+
+  .data-table th,
+  .data-table td {
+    @apply py-2 px-2 text-sm;
+  }
+
+  .stat-card {
+    @apply p-4;
+  }
+
+  .block-card {
+    @apply p-4;
+  }
+}
+
+/* Focus styles for accessibility */
+@media (prefers-reduced-motion: no-preference) {
+  .focus-ammocoin:focus {
+    @apply outline-none ring-2 ring-ammocoin-primary ring-offset-2 ring-offset-ammocoin-black;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .glass-card {
+    @apply border-2 border-ammocoin-primary;
+  }
+
+  .hash-display {
+    @apply border-2 border-ammocoin-border;
+  }
+}

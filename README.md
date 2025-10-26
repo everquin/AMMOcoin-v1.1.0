@@ -52,7 +52,14 @@ AMMOcoin is a modern, privacy-focused cryptocurrency built on proven blockchain 
 - QR code support for mobile scanning
 - Offline operation capability
 
-#### **3. Cross-Platform Build System**
+#### **3. Blockchain Explorer** (Web Application)
+- Modern Next.js 16 implementation with TypeScript
+- Real-time blockchain data visualization
+- AMMOcoin design system with glassmorphism UI
+- Privacy transaction support (Sapling shielded)
+- Responsive design for mobile/desktop
+
+#### **4. Cross-Platform Build System**
 - Docker-based compilation for Linux x64
 - Docker-based compilation for Windows x64
 - Docker-based compilation for ARM64/Raspberry Pi
@@ -150,6 +157,22 @@ open paper-wallet-generator/index.html
 # Generate secure offline wallets with QR codes
 ```
 
+### Blockchain Explorer
+```bash
+# Navigate to the explorer directory
+cd blockchain-explorer
+
+# Install dependencies
+npm install
+
+# Configure environment (edit .env.local)
+cp .env.example .env.local
+
+# Start development server
+npm run dev
+# Opens at http://localhost:3000
+```
+
 ---
 
 ## 📊 **Technical Specifications**
@@ -172,6 +195,8 @@ open paper-wallet-generator/index.html
 ## 📝 **Documentation**
 
 - **Installation Guide**: [ammocoin-apps-from-ammocoin/README.md](ammocoin-apps-from-ammocoin/README.md)
+- **Blockchain Explorer**: [blockchain-explorer/README.md](blockchain-explorer/README.md)
+- **Explorer Deployment**: [blockchain-explorer/DEPLOYMENT_GUIDE.md](blockchain-explorer/DEPLOYMENT_GUIDE.md)
 - **Paper Wallet Guide**: [paper-wallet-generator/README.md](paper-wallet-generator/README.md)
 - **Build Instructions**: [cross-compile/README.md](cross-compile/README.md)
 - **Release Summary**: [MULTI_PLATFORM_RELEASE_SUMMARY.md](MULTI_PLATFORM_RELEASE_SUMMARY.md)
